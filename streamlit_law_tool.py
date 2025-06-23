@@ -113,7 +113,7 @@ def generate_html(title, date_label, date_text, law_data):
     </head><body>
     <h2>{title}</h2>
     <p><strong>{date_label}：</strong>{date_text}</p>
-    <table><thead><tr><th>章</th><th>章節</th><th>條</th><th>條文內容</th><th>定義條文</th><th>是否適用</th><th>是否符合</th><th>備註</th></tr></thead><tbody>
+    <table><thead><tr><th>章</th><th>章節</th><th>條</th><th  width="500wh">條文內容</th><th>定義條文</th><th>是否適用</th><th>是否符合</th><th  width="300wh">備註</th></tr></thead><tbody>
     '''
     rows = ""
     for row in law_data:
