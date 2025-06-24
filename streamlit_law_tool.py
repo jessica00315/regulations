@@ -6,6 +6,7 @@ import html
 import re
 from bs4 import BeautifulSoup
 from datetime import datetime
+import base64
 
 # ======= 網頁標題與說明 =======
 st.set_page_config(page_title="法規清單擷取工具", layout="wide")
@@ -154,5 +155,8 @@ if st.button("🚀 擷取並產出 HTML"):
                 file_name=filename,
                 mime="text/html"
             )
+            # 額外提供 base64 下載連結供使用者右鍵另存
+            href = f'<a href="data:text/html;base64,{base64.b64encode(html_string.encode()).decode()}" download="{filename}" target="_blank">📎 另開視窗下載</a>'
+            st.markdown(href, unsafe_allow_html=True)
         except Exception as e:
             st.error(f"❌ 發生錯誤：{e}")
