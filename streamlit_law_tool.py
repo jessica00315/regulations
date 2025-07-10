@@ -1,4 +1,6 @@
 # 法規擷取並輸出為完整 HTML 表格（Streamlit 版）
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 import streamlit as st
 import requests
@@ -21,7 +23,7 @@ https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=J0130069""",
 
 # ======= 主邏輯：擷取資料 =======
 def get_law_data_and_meta(url):
-    res = requests.get(url)
+    res = requests.get(url, verify=False)  # 關閉 SSL 驗證    res = requests.get(url)
     res.encoding = 'utf-8'
     soup = BeautifulSoup(res.text, 'html.parser')
 
